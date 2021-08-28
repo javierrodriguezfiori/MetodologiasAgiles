@@ -1,0 +1,18 @@
+.files {
+    padding-top: 20px;
+    padding-left: 20px;
+    display: grid;
+    width: 30%;
+}
+
+.button {
+    color: #fff !important;
+    background-color: #6b242d !important;
+    margin-bottom: 10px !important;
+}
+
+.button:hover {
+    color: #fff !important;
+    background-color: #740010 !important;
+    margin-bottom: 10px !important;
+}
