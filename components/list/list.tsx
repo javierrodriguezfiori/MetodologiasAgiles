@@ -4,29 +4,36 @@ import Card from '../../components/card/card'
 import { Item } from "../../types/types"
 
 export default function CardList(){
-    const [comercios, setComercios] = useState<Array<any>>([])
+    const [comercios, setComercios] = useState<Array<Item>>([])
     
     useEffect(() => {
         //@ts-ignore
         // setComercios(getComerciosFromFirestore())
-        console.log(comercios)
-      }, [])
+        getComerciosFromFirestore()
+    }, [])
     
     const getComerciosFromFirestore = async () => {
+        setComercios([])
+
         await firestore
         .collection("restaurants")
         .get()
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
                 const data = doc.data()
-                comercios.push(data);
+                console.log(data);
+                //@ts-ignore
+                setComercios([...comercios, data])
             });
         }); 
     }
 
     return (
         <div>
-            <Card url={'https://firebasestorage.googleapis.com/v0/b/pedidosnow-276a6.appspot.com/o/Captura.JPG?alt=media&token=f067190a-b0e1-4378-a6f4-a1e0eb907537'} titulo={'Paella con camarones'} descripcion={'Comida española con arroz y calamares'}/>
+            {JSON.stringify(comercios)}
+            {comercios.map(rest=>
+                <Card key={rest.url} url={rest.url} titulo={rest.titulo} descripcion={rest.descripcion}/>
+            )}
         </div>
     )
 
