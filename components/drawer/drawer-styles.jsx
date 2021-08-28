@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   loginButton: {
     marginLeft: 'auto',
-    fontSize: 25
+    fontSize: 20
   },
   menuButton: {
     marginRight: 36,
