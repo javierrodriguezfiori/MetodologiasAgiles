@@ -4,12 +4,14 @@ import Button from '@material-ui/core/Button'
 import { Input, InputLabel, MenuItem, Select, TextField, Typography } from '@material-ui/core'
 import useStyles from '../components/drawer/drawer-styles'
 import { Locations, LocationsEnumLabels } from '../enums/Locations'
+import { useRouter } from 'next/router'
 
 interface HomeProps { }
 
 const Home: React.FC<HomeProps> = () => {
 
   const [search, setSearch] = useState('');
+  const router = useRouter()
 
   const handleChange = (event) => {
     setSearch(event.target.value)
@@ -19,7 +21,7 @@ const Home: React.FC<HomeProps> = () => {
 
   const submitSearch = (e) => {
     e.preventDefault();
-    alert(search);
+    router.push("/restaurants?location="+search);
   };
 
   return (
@@ -34,7 +36,7 @@ const Home: React.FC<HomeProps> = () => {
               </Select>
 
             {/* <TextField style={{ width: '100%' }} onChange={(e) => setSearch(e.target.value)} id="outlined-basic" label="Escribi tu dirección" variant="outlined" /> */}
-            <Button onClick={(e) => submitSearch(e)} color="secondary" style={{ marginLeft: '1rem', paddingTop: '1rem', paddingBottom: '1rem' }} variant="contained" >Buscar</Button>
+            <Button disabled={!search} onClick={(e) => submitSearch(e)} color="secondary" style={{ marginLeft: '1rem', paddingTop: '1rem', paddingBottom: '1rem' }} variant="contained" >Buscar</Button>
             </div>
          </div>
          </div>
