@@ -17,14 +17,13 @@ export default function CardList() {
     const docs = [];
     querySnapshot.forEach((doc) => {
         docs.push({...doc.data(),id:doc.id})
-        setComercios([docs]);
     });
+    setComercios(docs);
   };
 
   return (
     <>
-      {JSON.stringify(comercios)}
-      {comercios[0]?.map((rest) => (
+      {comercios.map((rest) => (
         <Card
           key={rest.id}
           url={rest.url}
