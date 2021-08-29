@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   loginButton: {
     marginLeft: 'auto',
-    fontSize: 20
+    fontSize: 19
   },
   menuButton: {
     marginRight: 36,
@@ -65,13 +65,29 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(0),
     backgroundColor: '#ffff',
   },
-  container: {
+  homeSearch: {
     margin: 'auto',
-    width: '45%'
-  }
+    width: '45%',
+    paddingTop: '20rem'
+
+  },
+  container: {
+    height: '87.2vh',
+    backgroundImage: 'url(https://images.deliveryhero.io/image/pedidosya/home-backgrounds/home-background-ar.jpg?quality=100&width=1345)',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover'
+  },
+  bottomPush: {
+    bottom: 0,
+    textAlign: "center",
+    left: 0,
+    right: 0,
+
+}
 }))
 
 export default useStyles

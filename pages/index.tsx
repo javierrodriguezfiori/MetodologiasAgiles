@@ -30,18 +30,18 @@ const Home: React.FC<HomeProps> = () => {
   return (
     <CustomDrawer
       content={
-        <div style={{marginTop: '12rem'}}>
-        <div className={classes.container}>
-          <Typography style={{textAlign: 'center', marginBottom: '3rem'}} variant="h4">Vola antes de que llegue tu pedido!</Typography>
+        <div className={classes.container} >
+          <div className={classes.homeSearch}>
+          <Typography style={{textAlign: 'center', marginBottom: '3rem', color: 'white', font: 'Helvetica'}} variant="h4">¡Volá antes de que llegue tu pedido!</Typography>
             <div style={{display: 'flex'}}>
-              <Select style={{ width: '100%' }} value={search} onChange={handleChange}>
+              <Select variant="outlined" style={{ width: '100%', backgroundColor: '#FFF'}} value={search} onChange={handleChange}>
                 {Object.values(Locations).map( item => <MenuItem value={Locations[item as string]}>{LocationsEnumLabels[item]}</MenuItem>)}
               </Select>
 
             {/* <TextField style={{ width: '100%' }} onChange={(e) => setSearch(e.target.value)} id="outlined-basic" label="Escribi tu dirección" variant="outlined" /> */}
-            <Button disabled={!search} onClick={(e) => submitSearch(e)} color="secondary" style={{ marginLeft: '1rem', paddingTop: '1rem', paddingBottom: '1rem' }} variant="contained" >Buscar</Button>
+            <Button onClick={(e) => submitSearch(e)} color="secondary" style={{ marginLeft: '1rem', paddingTop: '1rem', paddingBottom: '1rem' }} variant="contained" >Buscar</Button>
             </div>
-         </div>
+            </div>
          </div>
       }
     />
