@@ -11,7 +11,6 @@ export default function ListCards() {
   }, []);
 
   const getComerciosFromFirestore = async () => {
-    setComercios([]);
     const querySnapshot = await firestore.collection("restaurants").get();
     const docs = [];
     querySnapshot.forEach((doc) => {
