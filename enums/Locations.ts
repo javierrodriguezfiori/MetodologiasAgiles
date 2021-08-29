@@ -8,6 +8,5 @@ export const LocationsEnumLabels = {
     [Locations.BURZACO] : 'Burzaco',
     [Locations.LOMAS_DE_ZAMORA] : 'Lomas de Zamora',
     [Locations.LANUS] : 'Lanús',
-
 }
 
