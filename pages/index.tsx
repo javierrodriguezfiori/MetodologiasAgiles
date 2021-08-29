@@ -6,6 +6,7 @@ import useStyles from '../components/drawer/drawer-styles'
 import { Locations, LocationsEnumLabels } from '../enums/Locations'
 import { useRouter } from 'next/router'
 
+
 interface HomeProps { }
 
 const Home: React.FC<HomeProps> = () => {
@@ -18,6 +19,8 @@ const Home: React.FC<HomeProps> = () => {
   };
 
   const classes = useStyles();
+
+
 
   const submitSearch = (e) => {
     e.preventDefault();
