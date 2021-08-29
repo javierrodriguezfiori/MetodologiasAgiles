@@ -18,3 +18,10 @@ export type ItemMenu = {
     icon: any,
     url: string
 }
+
+export type  Item = {
+    id:number;
+    url: string;
+    titulo: string;
+    descripcion: string;
+}

@@ -4,12 +4,13 @@ import Head from 'next/head'
 import { auth } from '../config'
 import Typography from '@material-ui/core/Typography'
 import styles from './login.module.css'
-import { ItemMenu } from '../types/types'
+import { Item, ItemMenu } from '../types/types'
 import { getMenu } from '../functions/getMenu'
 import Button from '@material-ui/core/Button'
 import VpnKeyRoundedIcon from '@material-ui/icons/VpnKeyRounded'
 import ExitToAppRoundedIcon from '@material-ui/icons/ExitToAppRounded'
 import { firestore } from '../config'
+import Card from '../components/card/card'
 
 export default function Login() {
   const [user, setUser] = useState(null)
@@ -25,18 +26,6 @@ export default function Login() {
   useEffect(() => {
     user && getUsersFromFirestore()
   }, [user])
-
-  // Logueo con Google
-  // const signIn = () => {
-  //   auth()
-  //     .signInWithPopup(provider)
-  //     .then((result) => {
-  //       //@ts-ignore
-  //       const user = result.user
-  //       setUser({ userId: user.uid, userName: user.displayName })
-  //     })
-  //     .catch()
-  // }
 
   // Logueo con mail y contraseña
   const signIn = () => {
@@ -119,6 +108,8 @@ export default function Login() {
               Cerrar sesion
             </Button>
           </div>
+          <br/>
+          <Card url={'https://firebasestorage.googleapis.com/v0/b/pedidosnow-276a6.appspot.com/o/Captura.JPG?alt=media&token=f067190a-b0e1-4378-a6f4-a1e0eb907537'} titulo={'Paella con camarones'} descripcion={'Comida española con arroz y calamares'}/>
         </>
       }
       menu={menu}
