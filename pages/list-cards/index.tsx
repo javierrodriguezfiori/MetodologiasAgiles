@@ -11,7 +11,9 @@ export default function ListCards() {
   }, []);
 
   const getComerciosFromFirestore = async () => {
-    const querySnapshot = await firestore.collection("restaurants").get();
+
+
+    const querySnapshot = await firestore.collection("restaurants").where("localidad","==","asd").get();
     const docs = [];
     querySnapshot.forEach((doc) => {
       docs.push({ ...doc.data(), id: doc.id });

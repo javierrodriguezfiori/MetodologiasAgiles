@@ -81,12 +81,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
     backgroundSize: 'cover'
   },
-  bottomPush: {
+  footer: {
     bottom: 0,
     textAlign: "center",
     left: 0,
     right: 0,
-
 }
 }))
 

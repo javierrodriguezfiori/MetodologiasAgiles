@@ -42,7 +42,7 @@ export default function CustomDrawer(props: {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         {props.content}
-        <div className={classes.bottomPush}> 
+        <div className={classes.footer}> 
         <BottomNavigation showLabels style={{backgroundColor: '#E63939'}}>
           <BottomNavigationAction label="Footer 1" icon={<RestoreOutlined />} />
           <BottomNavigationAction label="Footer 2" icon={<RestoreOutlined />} />

@@ -24,7 +24,7 @@ const Home: React.FC<HomeProps> = () => {
 
   const submitSearch = (e) => {
     e.preventDefault();
-    router.push("/restaurants?location="+search);
+    router.push("/restaurants?localidad="+search);
   };
 
   return (
