@@ -1,40 +1,37 @@
-import { useEffect, useState } from "react"
-import { firestore } from '../../config'
-import Card from '../../components/card/card'
-import { Item } from "../../types/types"
+import { useEffect, useState } from "react";
+import { firestore } from "../../config";
+import Card from "../../components/card/card";
+import { Item } from "../../types/types";
+import { Grid } from "@material-ui/core";
 
-export default function CardList(){
-    const [comercios, setComercios] = useState<Array<Item>>([])
-    
-    useEffect(() => {
-        //@ts-ignore
-        // setComercios(getComerciosFromFirestore())
-        getComerciosFromFirestore()
-    }, [])
-    
-    const getComerciosFromFirestore = async () => {
-        setComercios([])
+export default function CardList() {
+  const [comercios, setComercios] = useState([]);
 
-        await firestore
-        .collection("restaurants")
-        .get()
-        .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                const data = doc.data()
-                console.log(data);
-                //@ts-ignore
-                setComercios([...comercios, data])
-            });
-        }); 
-    }
+  useEffect(() => {
+    getComerciosFromFirestore();
+  }, []);
 
-    return (
-        <div>
-            {JSON.stringify(comercios)}
-            {comercios.map(rest=>
-                <Card key={rest.url} url={rest.url} titulo={rest.titulo} descripcion={rest.descripcion}/>
-            )}
-        </div>
-    )
+  const getComerciosFromFirestore = async () => {
+      setComercios([]);
+    const querySnapshot = await firestore.collection("restaurants").get();
+    const docs = [];
+    querySnapshot.forEach((doc) => {
+        docs.push({...doc.data(),id:doc.id})
+        setComercios([docs]);
+    });
+  };
 
+  return (
+    <>
+      {JSON.stringify(comercios)}
+      {comercios[0]?.map((rest) => (
+        <Card
+          key={rest.id}
+          url={rest.url}
+          titulo={rest.titulo}
+          descripcion={rest.descripcion}
+        />
+      ))}
+    </>
+  );
 }

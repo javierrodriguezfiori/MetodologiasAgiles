@@ -19,8 +19,9 @@ export type ItemMenu = {
     url: string
 }
 
-export interface Item {
-    url: string,
-    titulo: string,
-    descripcion: string,
+export type  Item = {
+    id:number;
+    url: string;
+    titulo: string;
+    descripcion: string;
 }

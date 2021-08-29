@@ -55,7 +55,7 @@ export default function ItemCard({url,titulo,descripcion}:props){
   };
 
   return (
-    <Card key={url} className={classes.root}>
+    <Card  className={classes.root}>
       <CardHeader
         title={titulo}
       />
