@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles'
 
-const drawerWidth = 240
+const drawerWidth = 500
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    backgroundColor: '#740010',
+    backgroundColor: '#E63939',
   },
   appBarShift: {
     marginLeft: drawerWidth,
@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
+  },
+  loginButton: {
+    marginLeft: 'auto',
+    fontSize: 20
   },
   menuButton: {
     marginRight: 36,
@@ -64,6 +68,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     backgroundColor: '#ffff',
   },
+  container: {
+    margin: 'auto',
+    width: '45%'
+  }
 }))
 
 export default useStyles
