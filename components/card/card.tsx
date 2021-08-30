@@ -13,8 +13,10 @@ const useStyles = makeStyles((theme) => ({
     padding: 15,
   },
   media: {
-    width: "150px",
-    height: "100px",
+    borderRadius: "10%",
+    border: "0.5px solid",
+    width: "100%",
+    height: "80%",
   },
   contend: {
     width: "100%",
@@ -59,7 +61,7 @@ export default function ItemCard({ url, titulo, descripcion }: props) {
         </Grid>
         <Grid  container item xs={3} justify="flex-end" >
           <CardContent className={classes.contend}>
-          <Typography>{titulo}</Typography>
+          <Typography style={{fontWeight: 'bold'}}>{titulo}</Typography>
           <Typography>{descripcion}</Typography>
           </CardContent>
         </Grid>

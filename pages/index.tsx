@@ -36,7 +36,7 @@ const Home: React.FC<HomeProps> = () => {
             <div style={{display: 'flex'}}>
               <Select variant="outlined" style={{ width: '100%', backgroundColor: '#FFF'}} value={search} onChange={handleChange}>
                 {Object.values(Locations).map((item) => 
-                  <MenuItem value={Locations[item as string]}>
+                  <MenuItem key={item} value={Locations[item as string]}>
                     {LocationsEnumLabels[item]}
                   </MenuItem>)}
               </Select>

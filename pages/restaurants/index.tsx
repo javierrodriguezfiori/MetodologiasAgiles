@@ -1,4 +1,4 @@
-import { Grid, Paper, TextField } from '@material-ui/core';
+import { Grid, Paper, TextField, Typography } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
@@ -14,9 +14,11 @@ const Restaurants: React.FC<RestaurantsProps> = () => {
     const router = useRouter();
     const classes = useStyles();
     const [restaurantes, setRestaurantes] = useState<Restaurante[]>([]);
+    const [isLoadingRestaurantes, setIsLoadingRestaurantes] = useState(false);
 
     useEffect( () => {
         const fetchRestaurants = async () => {
+            setIsLoadingRestaurantes(true);
             let localidad = router.query.localidad
             const querySnapshot = await firestore.collection("restaurants").where("localidad","==",localidad).get();
             const docs = [];
@@ -26,6 +28,7 @@ const Restaurants: React.FC<RestaurantsProps> = () => {
                 }
             });
             setRestaurantes(docs);
+            setIsLoadingRestaurantes(false);
         };
         fetchRestaurants();
     }, []);
@@ -34,7 +37,12 @@ const Restaurants: React.FC<RestaurantsProps> = () => {
     <Grid container className={classes.root} direction="row" spacing={3} style={{padding: '1rem', backgroundColor: '#F9F6F4'}}>
         <Grid item xs={3}></Grid>
         <Grid container item xs={6} >
-            <CardList comercios={restaurantes} />
+            {restaurantes.length? 
+                <CardList loadingComercios={isLoadingRestaurantes} comercios={restaurantes} />
+                :<Typography style={{textAlign: 'center', marginBottom: '3rem', color: 'black', font: 'Helvetica'}} variant="h5">
+                    No se encontraron resultados
+                </Typography>
+            }
         </Grid>
         <Grid item xs={3}></Grid>
     </Grid>
