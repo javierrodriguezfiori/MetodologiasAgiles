@@ -13,7 +13,7 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Grid } from '@material-ui/core';
+import { Avatar, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,10 +55,15 @@ export default function ItemCard({url,titulo,descripcion}:props){
 
   return (
     <Grid container justify="center">
-    <Card  className={classes.root}>
-      <CardHeader
+    <Card className={classes.root} variant="outlined">
+      <CardHeader avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+            {titulo.substring(0,1)}
+          </Avatar>
+        }
         title={titulo}
       />
+      
       <CardMedia
         className={classes.media}
         image={url}

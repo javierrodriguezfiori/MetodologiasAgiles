@@ -6,7 +6,6 @@ import useStyles from '../components/drawer/drawer-styles'
 import { Locations, LocationsEnumLabels } from '../enums/Locations'
 import { useRouter } from 'next/router'
 
-
 interface HomeProps { }
 
 const Home: React.FC<HomeProps> = () => {
@@ -20,11 +19,12 @@ const Home: React.FC<HomeProps> = () => {
 
   const classes = useStyles();
 
-
-
   const submitSearch = (e) => {
     e.preventDefault();
-    router.push("/restaurants?localidad="+search);
+    router.push({
+      pathname: "/restaurants",
+      query: { localidad: search }
+    })
   };
 
   return (
@@ -35,7 +35,10 @@ const Home: React.FC<HomeProps> = () => {
           <Typography style={{textAlign: 'center', marginBottom: '3rem', color: 'white', font: 'Helvetica'}} variant="h4">¡Volá antes de que llegue tu pedido!</Typography>
             <div style={{display: 'flex'}}>
               <Select variant="outlined" style={{ width: '100%', backgroundColor: '#FFF'}} value={search} onChange={handleChange}>
-                {Object.values(Locations).map( item => <MenuItem value={Locations[item as string]}>{LocationsEnumLabels[item]}</MenuItem>)}
+                {Object.values(Locations).map((item) => 
+                  <MenuItem value={Locations[item as string]}>
+                    {LocationsEnumLabels[item]}
+                  </MenuItem>)}
               </Select>
 
             {/* <TextField style={{ width: '100%' }} onChange={(e) => setSearch(e.target.value)} id="outlined-basic" label="Escribi tu dirección" variant="outlined" /> */}
