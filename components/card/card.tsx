@@ -10,15 +10,7 @@ import {  orange} from '@material-ui/core/colors';
 
 import { Grid } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width:'25% ',
-    margin:20
-  },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-  },
+
   expand: {
     transform: 'rotate(0deg)',
     marginLeft: 'auto',
