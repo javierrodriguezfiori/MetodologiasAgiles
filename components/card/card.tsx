@@ -6,7 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
-import { red , orange} from '@material-ui/core/colors';
+import {  orange} from '@material-ui/core/colors';
 
 import { Grid } from '@material-ui/core';
 
