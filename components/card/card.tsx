@@ -59,6 +59,7 @@ export default function ItemCard({url,titulo,descripcion}:props){
       <CardHeader
         title={titulo}
       />
+      {'peito'}
       <CardMedia
         className={classes.media}
         image={url}
