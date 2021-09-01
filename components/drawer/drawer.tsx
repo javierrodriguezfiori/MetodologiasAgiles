@@ -82,16 +82,17 @@ export default function CustomDrawer(props: { content: React.ReactNode }) {
           <Typography variant="h5" noWrap>
             PedidosNow
           </Typography>
-          <IconButton
-            aria-label="account of current user"
-            aria-controls="primary-search-account-menu"
-            aria-haspopup="true"
-            color="inherit"
-            onClick={handleProfileMenuOpen}
-            className={classes.loginButton}
-          >
-            <AccountCircle />
-          </IconButton>
+          <div className={classes.loginButton}>
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+              onClick={handleProfileMenuOpen}
+            >
+              <AccountCircle />
+            </IconButton>
+          </div>
         </Toolbar>
       </AppBar>
       {renderMenu}
