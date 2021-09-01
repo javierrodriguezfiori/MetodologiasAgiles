@@ -5,7 +5,7 @@ interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
   return (
-    <>
+    <footer>
       <BottomNavigation showLabels style={{ backgroundColor: "#E63939" }}>
         <Typography
           variant="subtitle1"
@@ -27,7 +27,7 @@ const Footer: React.FC<FooterProps> = () => {
           . All Rights Reserved.
         </Typography>
       </BottomNavigation>
-    </>
+    </footer>
   );
 };
 

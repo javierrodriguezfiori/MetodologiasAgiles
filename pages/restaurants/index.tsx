@@ -25,7 +25,9 @@ const Restaurants: React.FC<RestaurantsProps> = () => {
   useEffect(() => {
     const fetchRestaurants = async () => {
       setIsLoadingRestaurantes(true);
-      let localidad = router.query.location || "BANFIELD";
+      let localidad =
+        router.query.localidad ||
+        new URLSearchParams(window.location.search).get("localidad");
       const querySnapshot = await firestore
         .collection("restaurants")
         .where("localidad", "==", localidad)
@@ -48,9 +50,7 @@ const Restaurants: React.FC<RestaurantsProps> = () => {
         <>
           <Grid
             container
-            className={classes.root}
             direction="row"
-            spacing={3}
             style={{
               padding: "1rem",
               backgroundColor: "#F9F6F4",
@@ -59,6 +59,12 @@ const Restaurants: React.FC<RestaurantsProps> = () => {
           >
             <Grid item xs={3}></Grid>
             <Grid container style={{ justifyContent: "center" }} item xs={6}>
+              <TextField
+                style={{ width: "100%" }}
+                id="outlined-basic"
+                label="Buscar..."
+                variant="outlined"
+              />
               {isLoadingRestaurantes ? (
                 <CircularProgress />
               ) : (

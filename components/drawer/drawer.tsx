@@ -15,14 +15,20 @@ import {
   BottomNavigationAction,
   Button,
   Grid,
+  IconButton,
+  Menu,
+  MenuItem,
 } from "@material-ui/core";
 import {
+  AccountCircle,
+  AccountCircleRounded,
   FolderOpenOutlined,
   LocationCityOutlined,
   RestoreOutlined,
 } from "@material-ui/icons";
 import Link from "next/link";
 import Footer from "../footer/Footer";
+import { getMenu } from "../../functions/getMenu";
 
 //TODO: Cambiar el boton de Login por uno que muestre Login si no estas logeado/ Perfil si estas logeado
 
@@ -31,6 +37,37 @@ export default function CustomDrawer(props: { content: React.ReactNode }) {
   const classes = useStyles();
   const theme = useTheme();
   const router = useRouter();
+
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const menuId = "primary-search-account-menu";
+  const isMenuOpen = Boolean(anchorEl);
+
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      id={menuId}
+      keepMounted
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      {getMenu().map((item) => (
+        <MenuItem onClick={() => router.push(`${item.url}`)}>
+          {item.text}
+        </MenuItem>
+      ))}
+    </Menu>
+  );
 
   return (
     <div className={classes.root}>
@@ -45,11 +82,19 @@ export default function CustomDrawer(props: { content: React.ReactNode }) {
           <Typography variant="h5" noWrap>
             PedidosNow
           </Typography>
-          <Button color="inherit" className={classes.loginButton}>
-            Login
-          </Button>
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+            onClick={handleProfileMenuOpen}
+            className={classes.loginButton}
+          >
+            <AccountCircle />
+          </IconButton>
         </Toolbar>
       </AppBar>
+      {renderMenu}
       <main className={classes.content}>
         <div className={classes.toolbar} />
         {props.content}
