@@ -1,38 +1,36 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Grid } from '@material-ui/core';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import { red } from "@material-ui/core/colors";
+import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width:'25% ',
-    margin:20
+    width: "100%",
+    margin: 20,
+    padding: 15,
   },
   media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
+    borderRadius: "10%",
+    border: "0.5px solid",
+    width: "100%",
+    height: "80%",
+  },
+  contend: {
+    width: "100%",
+    height: "auto",
   },
   expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.shortest,
     }),
   },
   expandOpen: {
-    transform: 'rotate(180deg)',
+    transform: "rotate(180deg)",
   },
   avatar: {
     backgroundColor: red[500],
@@ -40,12 +38,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface props {
-    url: string
-    titulo: string 
-    descripcion: string
+  url: string;
+  titulo: string;
+  descripcion: string;
 }
 
-export default function ItemCard({url,titulo,descripcion}:props){
+export default function ItemCard({ url, titulo, descripcion }: props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -55,24 +53,21 @@ export default function ItemCard({url,titulo,descripcion}:props){
 
   return (
     <Grid container justify="center">
-    <Card  className={classes.root}>
-      <CardHeader
-        title={titulo}
-      />
-      <CardMedia
-        className={classes.media}
-        image={url}
-        title={titulo}
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {descripcion}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-      </CardActions>
-    </Card>
+      <Card className={classes.root} variant="outlined">
+        <Grid container direction="row" alignItems="center">
+
+        <Grid  container item xs={2} justify="flex-start">
+          <img className={classes.media} src={url} />
+        </Grid>
+        <Grid  container item xs={3} justify="flex-end" >
+          <CardContent className={classes.contend}>
+          <Typography style={{fontWeight: 'bold'}}>{titulo}</Typography>
+          <Typography>{descripcion}</Typography>
+          </CardContent>
+        </Grid>
+
+        </Grid>
+      </Card>
     </Grid>
   );
 }
-
