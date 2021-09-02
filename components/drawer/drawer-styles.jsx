@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     textAlign: "center",
-    position: "absolute",
+    position: "relative",
     right: 0,
     bottom: 0,
     left: 0,
