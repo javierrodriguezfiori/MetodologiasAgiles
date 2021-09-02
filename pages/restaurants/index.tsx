@@ -55,15 +55,17 @@ const Restaurants: React.FC<RestaurantsProps> = () => {
               padding: "1rem",
               backgroundColor: "#F9F6F4",
               width: "100%",
+              minHeight: "100%",
             }}
           >
             <Grid item xs={3}></Grid>
             <Grid container style={{ justifyContent: "center" }} item xs={6}>
               <TextField
-                style={{ width: "100%" }}
+                style={{ width: "100%"}}
                 id="outlined-basic"
                 label="Buscar..."
                 variant="outlined"
+                classes={{root:classes.textFieldStyles}}
               />
               {isLoadingRestaurantes ? (
                 <CircularProgress />

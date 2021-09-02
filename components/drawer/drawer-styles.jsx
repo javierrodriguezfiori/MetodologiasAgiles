@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const drawerWidth = 500;
+const drawerWidth = 1500;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -84,9 +84,27 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
   },
   footer: {
-    bottom: 0,
     textAlign: "center",
-    position: "sticky",
+    position: "absolute",
+    right: 0,
+    bottom: 0,
+    left: 0,
+  },
+  textFieldStyles: {
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        background:'white',
+        borderColor: 'black',
+      },
+      '&:hover fieldset': {
+        background:'white',
+        borderColor: 'red',
+      },
+      '&.Mui-focused fieldset': {
+        background:'white',
+        borderColor: 'red',
+      },
+    }
   },
 }));
 

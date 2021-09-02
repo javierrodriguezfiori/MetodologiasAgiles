@@ -32,7 +32,7 @@ const Home: React.FC<HomeProps> = () => {
       content={
         <div className={classes.container} >
           <div className={classes.homeSearch}>
-          <Typography style={{textAlign: 'center', marginBottom: '3rem', color: 'white', font: 'Helvetica'}} variant="h4">¡Volá antes de que llegue tu pedido!</Typography>
+          <Typography style={{textAlign: 'center', color: 'white', font: 'Helvetica'}} variant="h4">¡Volá antes de que llegue tu pedido!</Typography>
             <div style={{display: 'flex'}}>
               <Select variant="outlined" style={{ width: '100%', backgroundColor: '#FFF'}} value={search} onChange={handleChange}>
                 {Object.values(Locations).map((item) => 
