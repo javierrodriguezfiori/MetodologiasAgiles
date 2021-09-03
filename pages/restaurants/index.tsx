@@ -12,6 +12,7 @@ import CustomDrawer from "../../components/drawer/drawer";
 import useStyles from "../../components/drawer/drawer-styles";
 import CardList from "../../components/list/list";
 import { firestore } from "../../config";
+import FetchService from "../../functions/fetch/FetchService";
 import { Restaurante } from "../../models/models";
 
 interface RestaurantsProps {}
@@ -28,17 +29,10 @@ const Restaurants: React.FC<RestaurantsProps> = () => {
       let localidad =
         router.query.localidad ||
         new URLSearchParams(window.location.search).get("localidad");
-      const querySnapshot = await firestore
-        .collection("restaurants")
-        .where("localidad", "==", localidad)
-        .get();
-      const docs = [];
-      querySnapshot.forEach((doc) => {
-        if (doc.exists) {
-          docs.push({ ...doc.data(), id: doc.id });
-        }
-      });
-      setRestaurantes(docs);
+      const response = await FetchService.fetchRestaurantsByLocalidad(
+        localidad as string
+      );
+      setRestaurantes(response);
       setIsLoadingRestaurantes(false);
     };
     fetchRestaurants();
@@ -61,11 +55,11 @@ const Restaurants: React.FC<RestaurantsProps> = () => {
             <Grid item xs={3}></Grid>
             <Grid container style={{ justifyContent: "center" }} item xs={6}>
               <TextField
-                style={{ width: "100%"}}
+                style={{ width: "100%" }}
                 id="outlined-basic"
                 label="Buscar..."
                 variant="outlined"
-                classes={{root:classes.textFieldStyles}}
+                classes={{ root: classes.textFieldStyles }}
               />
               {isLoadingRestaurantes ? (
                 <CircularProgress />

@@ -68,7 +68,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(0),
     backgroundColor: "#ffff",
-    minHeight: "88vh",
   },
   homeSearch: {
     margin: "auto",
@@ -85,29 +84,29 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     textAlign: "center",
-    position: "absolute",
+    position: "relative",
     right: 0,
     bottom: 0,
     left: 0,
   },
   textFieldStyles: {
-    '& label.Mui-focused': {
-      color: 'black',
+    "& label.Mui-focused": {
+      color: "black",
     },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        background:'white',
-        borderColor: 'black',
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        background: "white",
+        borderColor: "black",
       },
-      '&:hover fieldset': {
-        background:'white',
-        borderColor: 'red',
+      "&:hover fieldset": {
+        background: "white",
+        borderColor: "red",
       },
-      '&.Mui-focused fieldset': {
-        background:'white',
-        borderColor: 'red',
+      "&.Mui-focused fieldset": {
+        background: "white",
+        borderColor: "red",
       },
-    }
+    },
   },
 }));
 
